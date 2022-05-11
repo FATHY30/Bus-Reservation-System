@@ -81,7 +81,7 @@ void CancelReservatin();
 int main()
 {
 	file_in();
-	open();
+	menu();
 	file_out();
 
 
@@ -351,6 +351,7 @@ void PaymentMethods()
 
 void open()
 {
+	void menu();
 	int choice;
 	char Continue;
 
