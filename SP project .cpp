@@ -64,6 +64,8 @@ void login();
 void admin();
 void DISPLAYtickets();
 void DISPLAYusers();
+void adduser();
+void addnewbus();
 void open();
 void display();
 void Show_Available_buses();
@@ -81,48 +83,23 @@ void CancelReservatin();
 int main()
 {
 	file_in();
-	menu();
+	open();
 	file_out();
-
-
-	/*
-	string username = "admin";
-	string password = "1234";
-	bool correct = false;
-	cout << "\t \t  Welcome to * Bus Reservation system *  \n\n";
-	do{
-	cout << "Enter Username: ";
-	cin >> username;
-	cout << "\n";
-	cout << "Enter password:  ";
-	cin >> password;
-	if (username == "admin" && password == "1234")
-	{
-	cout << "\n\t\t * success...... * \n \n";
-	correct = true;
-	}
-	else
-	cout << "\n \n \t \t Wrong username or password try again........ \n \n";
-	} while (correct == false);
-	*/
-
-
-
 }
 void menu()
 {
+	system("cls");
 
 	int c;
 
-
-	cout << "\t\t\t-----------------------------------------------------\n\n\n";
-	cout << "\t\t\t                Welcome to the home page            \n\n\n";
-	cout << "\t\t\t-----------------------   MENU   -----------------------\n\n\n";
+	cout << "\t\t-----------------------------------------------------\n\n\n";
+	cout << "\t\t                Welcome to the home page            \n\n\n";
+	cout << "\t\t------------   Bus Reservation System   -------------\n\n\n";
 	cout << "                                                               \n\n";
-	cout << "\t| Press 1 to login as * ADMIN *                  |" << endl;
-	cout << "\t| Press 2 to login as * USER *                   |" << endl;
-	cout << "\t| Press 0 to * EXIT *                            |" << endl;
-	cout << "\n\t\t\t Please Enter Your Choice : ";
+	cout << "| Press 1 to login as * ADMIN *                  |" << endl << endl;
+	cout << "| Press 2 to login as * USER *                   |" << endl << endl;
+	cout << "| Press 0 to * EXIT *                            |" << endl;
+	cout << "\n\n\n\t\t  Enter Your Choice : ";
 	cin >> c;
 	cout << endl;
 
@@ -144,61 +121,60 @@ void menu()
 		cout << "\t\t\t INVALID SELECTION! PLEASE TRY AGAIN \n\n";
 	}
 }
-	void login()
+void login()
+{
+
+
+	string username;
+	string password;
+	bool flag = false;
+
+	cout << "\t\t-----------------------------------------------------\n\n\n";
+	cout << "\t\t                                                      \n\n\n";
+	cout << "\t\t--------------------   Login Page   -----------------\n\n\n";
+	cout << "                                                               \n\n";
+	cout << " Please enter username ----> "; cin >> username;
+	cout << "\n Please enter Password ----> "; cin >> password;
+	cout << " Press 0 to exit                            " << endl;
+
+
+
+	if ((username == "admin") && (password == "1234"))
 	{
 
-
-		string username;
-		string password;
-		bool flag = false;
-
-		cout << "\t\t\t-----------------------------------------------------\n\n\n";
-		cout << "\t\t\t                                                      \n\n\n";
-		cout << "\t\t\t--------------------   Login Page   -------------------\n\n\n";
-		cout << "                                                               \n\n";
-		cout << "\t Please enter username ----> "; cin >> username;
-		cout << "\t Please enter Password ----> "; cin >> password;
-		cout << "\t Press 0 to exit                            " << endl;
-
-
-
-		if ((username == "admin") && (password == "1234"))
-		{
-
-			flag = true;
-
-		}
-
-
-
-		switch (flag)
-		{
-		case true:
-			system("cls");
-			admin();
-			break;
-		case false:
-			system("cls");
-			cout << "INVALID USERNAME OR PASSWORD " << endl;
-			login();
-			break;
-		}
-
+		flag = true;
 
 	}
-	void admin()
+
+
+
+	switch (flag)
 	{
+	case true:
+		system("cls");
+		admin();
+		break;
+	case false:
+		system("cls");
+		cout << "INVALID USERNAME OR PASSWORD " << endl;
+		login();
+		break;
+	}
+
+
+}
+void admin()
+{
 	system("cls");
-	cout << "\t\t\t-----------------------------------------------------\n\n\n";
-	cout << "\t\t\t                Welcome to the ADMIN page            \n\n\n";
-	cout << "\t\t\t-----------------------   MENU   -----------------------\n\n\n";
+	cout << "\t\t-----------------------------------------------------\n\n\n";
+	cout << "\t\t               Welcome to the ADMIN page            \n\n\n";
+	cout << "\t\t-----------------------   MENU   --------------------\n\n\n";
 	cout << "                                                               \n\n";
-	cout << "\t| 1)                    Add Ticket                     |" << endl;
-	cout << "\t| 2)                     Add Bus                       |" << endl;
-	cout << "\t| 3)                     Add User                      |" << endl;
-	cout << "\t| 4)                   Show tickets                    |" << endl;
-	cout << "\t| 5)                    Show Users                     |" << endl;
-	cout << "\t| 6)                    Show Buses                     |" << endl;
+	cout << "\t| 1)                     Add Bus                        |" << endl;
+	cout << "\t| 2)                     Add User                      |" << endl;
+	cout << "\t| 3)                   Show tickets                    |" << endl;
+	cout << "\t| 4)                    Show Users                     |" << endl;
+	cout << "\t| 5)                    Show Buses                     |" << endl;
 	cout << "\t| 0)                       EXIT                        |" << endl;
 	cout << "\n\t\t\t Please Enter Your Choice : ";
 	cin >> c;
@@ -208,20 +184,18 @@ void menu()
 	switch (c)
 	{
 	case 1:
+		addnewbus();
 		break;
 	case 2:
-
+		adduser();
 		break;
 	case 3:
-
-		break;
-	case 4:
 		DISPLAYtickets();
 		break;
-	case 5:
+	case 4:
 		DISPLAYusers();
 		break;
-	case 6:
+	case 5:
 		display();
 		break;
 	case 0:
@@ -239,32 +213,71 @@ void menu()
 
 }
 void DISPLAYtickets()
+{
+	system("cls");
+	for (int i = 0; i < ticket_counter; i++)
 	{
-
-		for (int i = 0; i < c; i++) {
-			cout << "ticket ID : " << ticket[i].ID;
-			cout << ", ticket take of time : " << ticket[i].Bus_Take_Of_Time;
-			cout << ", ticket date : " << ticket[i].Date_Of_Travelling;
-			cout << ", ticket bus num : " << ticket[i].BusNumber;
-			cout << ", ticket class : " << ticket[i].BusClass;
-			cout << ", ticket destination : " << ticket[i].destination;
-			cout << ", ticket price : " << ticket[i].Price << endl;
-			cout << "—————————————————————————————————————————————————————" << endl;
-		}
+		cout << "ticket ID : " << ticket[i].ID;
+		cout << ", ticket take of time : " << ticket[i].Bus_Take_Of_Time;
+		cout << ", ticket date : " << ticket[i].Date_Of_Travelling;
+		cout << ", ticket bus num : " << ticket[i].BusNumber;
+		cout << ", ticket class : " << ticket[i].BusClass;
+		cout << ", ticket destination : " << ticket[i].destination;
+		cout << ", ticket price : " << ticket[i].Price << endl;
+		cout << "—————————————————————————————————————————————————————" << endl;
 	}
+}
 
 void DISPLAYusers()
+{
+	system("cls");
+	for (int i = 0; i < c; i++)
 	{
-
-		for (int i = 0; i < c; i++) {
-			cout << "user's name: " << Users[i].name;
-			cout << ", user's phone NO*: " << Users[i].PhoneNumber;
-			cout << ", user's Email" << Users[i].Email;
-			cout << ", user's No*of buss booked: " << Users[i].No_Of_Buses_They_Booked;
-			cout << ", user's No*of seats: " << Users[i].No_Of_Seats_They_Chose << endl;
-			cout << "—————————————————————————————————————————————————————" << endl;
-		}
+		cout << "user's name: " << Users[i].name;
+		cout << ", user's phone NO*: " << Users[i].PhoneNumber;
+		cout << ", user's Email" << Users[i].Email;
+		cout << ", user's No*of buss booked: " << Users[i].No_Of_Buses_They_Booked;
+		cout << ", user's No*of seats: " << Users[i].No_Of_Seats_They_Chose << endl;
+		cout << "—————————————————————————————————————————————————————" << endl;
 	}
+	system("pasue");
+}
+void adduser()
+{
+	system("cls");
+	int users;
+	cout << "Enter the number of users that you want to add\n\n";
+	cin >> users;
+	for (int i = 0; i < users; i++)
+	{
+		cout << "Enter name: ";
+		cin >> Users[c].name; cout << "\n";
+		cout << "enter phone number: ";
+		cin >> Users[c].PhoneNumber; cout << "\n";
+		cout << "enter email: ";
+		cin >> Users[c].Email; cout << "\n";
+		cout << "Enter the number of buses he\she booked: ";
+		cin >> Users[c].No_Of_Buses_They_Booked;
+		cout << "Enter the number of tickets he\she xhoosed: ";
+		cin >> Users[c].No_Of_Seats_They_Chose;
+
+		c++;
+	}
+}
+void addnewbus()
+{
+	system("cls");
+	cout << "enter bus number:";
+	cin >> temp[0].BusNumber; cout << "\n";
+	cout << "enter bus trip time1:";
+	cin >> temp[0].TripsTime1[0]; cout << "\n";
+	cout << "enter bus trip time2:";
+	cin >> temp[0].TripsTime1[1]; cout << "\n";
+	cout << "enter bus trip time3:";
+	cin >> temp[0].TripsTime1[2]; cout << "\n";
+}
+
+
 void display()
 {
 	cout << "\t\t***************************************** \n \n";
@@ -276,7 +289,7 @@ void display()
 	cout << " 2. Show Prices          \t  6. Bus Classes \n\n ";
 	cout << " 3. Payment Options      \t  7. Users Information \n\n ";
 	cout << " 4. Book Tickets         \t  8. Cancel Reservation \n\n ";
-	cout << " 9. Exit \n\n ";
+	cout << " 9. Exit                 \t 10. Admin options ( for admins only ) ";
 }
 
 void Show_Available_buses()
@@ -351,7 +364,6 @@ void PaymentMethods()
 
 void open()
 {
-	void menu();
 	int choice;
 	char Continue;
 
@@ -366,7 +378,7 @@ void open()
 		do
 		{
 			boo = true;
-			cout << "Enter your choice : ";
+			cout << "\n\nEnter your choice : ";
 			cin >> c;
 
 			for (int i = 0; i < c.length(); i++)
@@ -417,11 +429,10 @@ void open()
 			CancelReservatin();
 			break;
 		case 9:
+			menu();
 			break;
 		case 10:
 			break;
-
-
 
 		default:
 			cout << "\t invalid option " << ch << " please try again ......." << endl;
@@ -728,7 +739,26 @@ void CancelReservatin()
 		}
 
 		else
+		{
 			cout << "\n\n\t\tInvalid data please try again..........\n\n";
+			bool found1 = false;
+			bool found2 = false;
+			bool found3 = false;
+
+			Show_Available_buses();
+			cout << "Enter bus number that you want to cancel it's reseravtion: ";
+			cin >> buSNumber;
+			//cout << "Enter the number of tickets you want to cancel: ";
+			//cin >> NoOfTickets;
+			cout << "Enter seat number: ";
+			cin >> Seattnumber;
+			cout << "Enter your name: ";
+			cin >> namme;
+			cout << "Enter your phone number: ";
+			cin >> phonee;
+
+
+		}
 
 
 	} while (found1 == false && found2 == false && found3 == false);
@@ -736,10 +766,11 @@ void CancelReservatin()
 
 void file_in()
 {
+	/*
 	ifstream B_C("Buses_Counter.txt");
 	B_C >> Bus_counter;
 	B_C.close();
-
+	*/
 	ifstream u("Users_Counter.txt");
 	u >> c;
 	u.close();
@@ -776,9 +807,6 @@ void file_in()
 	int h = 0;
 	while (Tickets_file.good())
 	{
-		if (ticket[i].ID == 0)
-			continue;
-
 		Tickets_file >> ticket[h].ID >> ticket[h].Bus_Take_Of_Time >> ticket[h].Date_Of_Travelling >> ticket[h].BusNumber >> ticket[h].BusClass >> ticket[h].destination >> ticket[h].Price;
 		h++;
 	}
@@ -788,6 +816,7 @@ void file_in()
 
 void file_out()
 {
+
 	ofstream B_C("Buses_Counter.txt");
 	B_C << Bus_counter;
 	B_C.close();
@@ -837,6 +866,8 @@ void file_out()
 
 		for (int h = 0; h < ticket_counter; h++)
 		{
+			if (ticket[h].ID == 0)
+				continue;
 
 			Tickets_file << ticket[h].ID << ' ' << ticket[h].Bus_Take_Of_Time << ' ' << ticket[h].Date_Of_Travelling << ' ' << ticket[h].BusNumber << ' ' << ticket[h].BusClass << ' ' << ticket[h].destination << ' ' << ticket[h].Price << "\n";
 		}
@@ -846,6 +877,5 @@ void file_out()
 
 
 }
-
 
 
