@@ -1,10 +1,10 @@
-1 40 17 3 SUNDAY--->11:20PM THURSDAY-->8:50AM MONDAY-->12:00PM 
-2 35 18 2 MONDAY--->05:00PM SATURDAY->06:00AM ---- 
-3 45 37 3 SATURDAY->03:00PM WEDNESDAY->04:30AM MONDAY-->10:00AM 
-4 50 40 1 FRIDAY--->09:00AM ---- ---- 
-5 44 30 2 SUNDAY--->12:00PM TUESDAY--->03:00AM ---- 
-6 36 30 1 MONDAY--->11:20AM ---- ---- 
-7 46 20 3 FRIDAY--->09:00AM SATURDAY-->07:30PM TUESDAY-->02:00AM 
-8 33 30 2 SUNDAY--->04:20AM MONDAY---->12:30PM WEDNESDAY->04:00AM 
-9 46 36 1 SATURDAY->09:00PM ---- ---- 
-10 40 35 3 THURSDAY->01:00AM SUNDAY---->11:00PM FRIDAY-->10:30AM 
+1 40  3 From:Cairo..to:SharmelSheikh
+2 35  2 From:Cairo..to:SharmelSheikh
+3 45  3 From:Cairo..to:Hurghada
+4 50  1 From:Cairo..to:Hurghada
+5 44  2 From:Cairo..to:Alexandria
+6 36  1 From:Cairo..to:Alexandria
+7 46  3 From:Cairo..to:MarsaMatrouh
+8 33  2 From:Cairo..to:North_Coast
+9 46  1 From:Cairo..to:Dahab
+10 40  3 From:Cairo..to:Fayoum
