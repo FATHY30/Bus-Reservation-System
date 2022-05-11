@@ -59,7 +59,11 @@ struct drivers
 
 void file_in();
 void file_out();
-void Update();
+void menu();
+void login();
+void admin();
+void DISPLAYtickets();
+void DISPLAYusers();
 void open();
 void display();
 void Show_Available_buses();
@@ -105,7 +109,162 @@ int main()
 
 
 }
+void menu()
+{
 
+	int c;
+
+
+	cout << "\t\t\t-----------------------------------------------------\n\n\n";
+	cout << "\t\t\t                Welcome to the home page            \n\n\n";
+	cout << "\t\t\t-----------------------   MENU   -----------------------\n\n\n";
+	cout << "                                                               \n\n";
+	cout << "\t| Press 1 to login as * ADMIN *                  |" << endl;
+	cout << "\t| Press 2 to login as * USER *                   |" << endl;
+	cout << "\t| Press 0 to * EXIT *                            |" << endl;
+	cout << "\n\t\t\t Please Enter Your Choice : ";
+	cin >> c;
+	cout << endl;
+
+	switch (c)
+	{
+	case 1:
+		system("cls");
+		login();
+		break;
+	case 2:
+		open();
+		break;
+	case 0:
+		cout << "\t\t\t Thank you! \n\n";
+		break;
+
+	default:
+		system("cls");
+		cout << "\t\t\t INVALID SELECTION! PLEASE TRY AGAIN \n\n";
+	}
+}
+	void login()
+	{
+
+
+		string username;
+		string password;
+		bool flag = false;
+
+		cout << "\t\t\t-----------------------------------------------------\n\n\n";
+		cout << "\t\t\t                                                      \n\n\n";
+		cout << "\t\t\t--------------------   Login Page   -------------------\n\n\n";
+		cout << "                                                               \n\n";
+		cout << "\t Please enter username ----> "; cin >> username;
+		cout << "\t Please enter Password ----> "; cin >> password;
+		cout << "\t Press 0 to exit                            " << endl;
+
+
+
+		if ((username == "admin") && (password == "1234"))
+		{
+
+			flag = true;
+
+		}
+
+
+
+		switch (flag)
+		{
+		case true:
+			system("cls");
+			admin();
+			break;
+		case false:
+			system("cls");
+			cout << "INVALID USERNAME OR PASSWORD " << endl;
+			login();
+			break;
+		}
+
+
+	}
+	void admin()
+	{
+	system("cls");
+	cout << "\t\t\t-----------------------------------------------------\n\n\n";
+	cout << "\t\t\t                Welcome to the ADMIN page            \n\n\n";
+	cout << "\t\t\t-----------------------   MENU   -----------------------\n\n\n";
+	cout << "                                                               \n\n";
+	cout << "\t| 1)                    Add Ticket                     |" << endl;
+	cout << "\t| 2)                     Add Bus                       |" << endl;
+	cout << "\t| 3)                     Add User                      |" << endl;
+	cout << "\t| 4)                   Show tickets                    |" << endl;
+	cout << "\t| 5)                    Show Users                     |" << endl;
+	cout << "\t| 6)                    Show Buses                     |" << endl;
+	cout << "\t| 0)                       EXIT                        |" << endl;
+	cout << "\n\t\t\t Please Enter Your Choice : ";
+	cin >> c;
+	cout << endl;
+
+
+	switch (c)
+	{
+	case 1:
+		break;
+	case 2:
+
+		break;
+	case 3:
+
+		break;
+	case 4:
+		DISPLAYtickets();
+		break;
+	case 5:
+		DISPLAYusers();
+		break;
+	case 6:
+		display();
+		break;
+	case 0:
+		cout << "\t\t\t Thank you! \n\n";
+		break;
+
+	default:
+		system("cls");
+		cout << "\t\t\t INVALID SELECTION! PLEASE TRY AGAIN \n\n";
+		admin();
+	}
+
+
+
+
+}
+void DISPLAYtickets()
+	{
+
+		for (int i = 0; i < c; i++) {
+			cout << "ticket ID : " << ticket[i].ID;
+			cout << ", ticket take of time : " << ticket[i].Bus_Take_Of_Time;
+			cout << ", ticket date : " << ticket[i].Date_Of_Travelling;
+			cout << ", ticket bus num : " << ticket[i].BusNumber;
+			cout << ", ticket class : " << ticket[i].BusClass;
+			cout << ", ticket destination : " << ticket[i].destination;
+			cout << ", ticket price : " << ticket[i].Price << endl;
+			cout << "—————————————————————————————————————————————————————" << endl;
+		}
+	}
+
+void DISPLAYusers()
+	{
+
+		for (int i = 0; i < c; i++) {
+			cout << "user's name: " << Users[i].name;
+			cout << ", user's phone NO*: " << Users[i].PhoneNumber;
+			cout << ", user's Email" << Users[i].Email;
+			cout << ", user's No*of buss booked: " << Users[i].No_Of_Buses_They_Booked;
+			cout << ", user's No*of seats: " << Users[i].No_Of_Seats_They_Chose << endl;
+			cout << "—————————————————————————————————————————————————————" << endl;
+		}
+	}
 void display()
 {
 	cout << "\t\t***************************************** \n \n";
@@ -494,6 +653,9 @@ void driver_info()
 }
 
 
+
+
+
 void UsersInformation()
 {
 
@@ -683,3 +845,6 @@ void file_out()
 
 
 }
+
+
+
