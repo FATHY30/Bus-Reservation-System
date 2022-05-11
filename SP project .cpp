@@ -2,9 +2,9 @@
 #include <string>
 #include <fstream>
 using namespace std;
+int Bus_counter = 0;
 int c = 0;
 int ticket_counter = 0;
-int ticket_temp;
 int sml = 1;
 char ch = sml;
 int mx_buses = 0;
@@ -30,7 +30,6 @@ struct buses
 struct persons
 {
 	string name;
-	int Age;
 	string PhoneNumber;
 	string Email;
 	int No_Of_Buses_They_Booked;
@@ -80,6 +79,7 @@ int main()
 	file_in();
 	open();
 	file_out();
+
 
 	/*
 	string username = "admin";
@@ -320,8 +320,6 @@ void BookTickets()
 		cout << "\t\t ** User informtaion **** \n\n";
 		cout << "Please Enter your name: ";
 		cin >> Users[c].name;
-		cout << "Enter age: ";
-		cin >> Users[c].Age;
 		cout << "Enter phone number: ";
 		cin >> Users[c].PhoneNumber;
 		cout << "Enter your Email address: ";
@@ -380,8 +378,9 @@ void BookTickets()
 				ticket[ticket_counter].Price = "180L.E";
 			cout << ticket[ticket_counter].ID << "\n\n";
 
-		ticket_counter++;
+			ticket_counter++;
 		}
+
 		//mx_tickets = T;
 		c++;
 		cout << "Do you want to book again ? (y/n) ";
@@ -528,7 +527,6 @@ void CancelReservatin()
 			if (buSNumber == ticket[i].BusNumber && ticket[i].ID == Seattnumber)
 			{
 				found1 = true;
-
 				break;
 			}
 		}
@@ -536,19 +534,18 @@ void CancelReservatin()
 		for (j = 0; j < c; j++)
 		{
 
-			if (Users[j].name == namme && Users[j].PhoneNumber == phonee)
+			if (namme == Users[j].name  && Users[j].PhoneNumber == phonee)
 			{
 				found2 = true;
 				break;
 			}
 		}
 
-		for (m = 0; m < mx_buses + 1; m++)
+		for (m = 0; m < mx_buses; m++)
 		{
 			if (temp[m].BusNumber == buSNumber)
 			{
 				found3 = true;
-
 				break;
 			}
 		}
@@ -562,6 +559,7 @@ void CancelReservatin()
 				Users[j].No_Of_Buses_They_Booked = 0;
 
 			temp[m].Available_No_Of_Seats += 1;
+			ticket_counter -= 1;
 
 			cout << "\n\t\tReservation has been canceled successfully.......... \n\n";
 		}
@@ -569,19 +567,25 @@ void CancelReservatin()
 		else
 			cout << "\n\n\t\tInvalid data please try again..........\n\n";
 
-			
+
 	} while (found1 == false && found2 == false && found3 == false);
 }
 
 void file_in()
 {
+	ifstream B_C("Buses_Counter.txt");
+	B_C >> Bus_counter;
+	B_C.close();
+
 	ifstream u("Users_Counter.txt");
 	u >> c;
 	u.close();
 
-	ifstream ticket_c("Tickets_Counter.txt");
-	ticket_c >> ticket_temp;
+	ifstream ticket_c("Ticket_Counter.txt");
+	ticket_c >> ticket_counter;
 	ticket_c.close();
+
+
 
 	ifstream another_file("Buses.txt");
 	int i = 0;
@@ -599,7 +603,7 @@ void file_in()
 	int j = 0;
 	while (persons_file.good())
 	{
-		persons_file >> Users[j].name >> Users[j].Age >> Users[j].PhoneNumber >> Users[j].Email >> Users[j].No_Of_Buses_They_Booked >> Users[j].No_Of_Seats_They_Chose;
+		persons_file >> Users[j].name >> Users[j].PhoneNumber >> Users[j].Email >> Users[j].No_Of_Buses_They_Booked >> Users[j].No_Of_Seats_They_Chose;
 		j++;
 	}
 	mx_persons = j;
@@ -609,6 +613,9 @@ void file_in()
 	int h = 0;
 	while (Tickets_file.good())
 	{
+		if (ticket[i].ID == 0)
+			continue;
+
 		Tickets_file >> ticket[h].ID >> ticket[h].Bus_Take_Of_Time >> ticket[h].Date_Of_Travelling >> ticket[h].BusNumber >> ticket[h].BusClass >> ticket[h].destination >> ticket[h].Price;
 		h++;
 	}
@@ -618,12 +625,16 @@ void file_in()
 
 void file_out()
 {
+	ofstream B_C("Buses_Counter.txt");
+	B_C << Bus_counter;
+	B_C.close();
+
 	ofstream  u("Users_Counter.txt");
 	u << c;
 	u.close();
 
 	ofstream ticket_c("Ticket_Counter.txt");
-	ticket_c << ticket_counter + ticket_temp;
+	ticket_c << ticket_counter;
 	ticket_c.close();
 
 
@@ -651,7 +662,7 @@ void file_out()
 	{
 		for (int j = 0; j < c; j++)
 		{
-			Persons_file << Users[j].name << ' ' << Users[j].Age << ' ' << Users[j].PhoneNumber << ' ' << Users[j].Email << ' ' << Users[j].No_Of_Buses_They_Booked << ' ' << Users[j].No_Of_Seats_They_Chose << "\n";
+			Persons_file << Users[j].name << ' ' << Users[j].PhoneNumber << ' ' << Users[j].Email << ' ' << Users[j].No_Of_Buses_They_Booked << ' ' << Users[j].No_Of_Seats_They_Chose << "\n";
 		}
 	}
 	Persons_file.close();
@@ -672,32 +683,3 @@ void file_out()
 
 
 }
-/*
-void Update()
-{
-
-ofstream Tickets_file("Tickets.txt");
-if (Tickets_file.is_open())
-{
-
-for (int h = 0; h < Mx_Tickets; h++)
-{
-if (ticket[h].ID == 0)
-continue;
-Tickets_file << "\n" << ticket[h].ID << ' ' << ticket[h].Bus_Take_Of_Time << ' ' << ticket[h].Date_Of_Travelling << ' ' << ticket[h].BusNumber << ' ' << ticket[h].BusClass << ' ' << ticket[h].destination << ' ' << ticket[h].Price;
-
-}
-}
-Tickets_file.close();
-
-ofstream Persons_file("Persons.txt");
-if (Persons_file.is_open())
-{
-for (int j = 0; j < mx_users; j++)
-{
-Persons_file << "\n" << Users[j].name << ' ' << Users[j].Age << ' ' << Users[j].PhoneNumber << ' ' << Users[j].Email << ' ' << Users[j].No_Of_Buses_They_Booked << ' ' << Users[j].No_Of_Seats_They_Chose<<"\n";
-}
-}
-Persons_file.close();
-}
-*/
