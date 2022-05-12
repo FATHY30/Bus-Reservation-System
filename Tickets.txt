@@ -1,6 +1,3 @@
-25 SUNDAY--->11:20PM 25/09/2022 1 A From:Cairo..to:SharmelSheikh 400L.E
-27 SUNDAY--->11:20PM 25/09/2022 1 A From:Cairo..to:SharmelSheikh 400L.E
-18 SATURDAY->06:00AM 25/09/2022 2 A From:Cairo..to:Alexandria 200L.E
-19 SATURDAY->06:00AM 25/09/2022 2 A From:Cairo..to:Alexandria 200L.E
-20 SATURDAY->06:00AM 25/09/2022 2 A From:Cairo..to:Alexandria 200L.E
-21 SATURDAY->06:00AM 25/09/2022 2 A From:Cairo..to:Alexandria 200L.E
+23 SUNDAY--->11:20PM 25/09/2022 1 A From:Cairo..to:SharmelSheikh 400L.E
+24 SUNDAY--->11:20PM 25/09/2022 1 A From:Cairo..to:SharmelSheikh 400L.E
+16 SATURDAY->06:00AM 24/08/2022 2 A From:Cairo..to:Hurghada 350L.E
