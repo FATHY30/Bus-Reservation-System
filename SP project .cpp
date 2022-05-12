@@ -967,9 +967,7 @@ void file_out()
 
 	ofstream Tickets_file("Tickets.txt");
 	{
-
-
-		for (int h = 0; h < ticket_counter; h++)
+		for (int h = 0; h < ticket_counter + 1 ; h++)
 		{
 			if (ticket[h].ID == 0)
 				continue;
