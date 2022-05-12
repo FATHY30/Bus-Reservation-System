@@ -1,8 +1,6 @@
-10 Tuesday-->12:00PM 25/9/2022 5 B From:Cairo..To:Alexandria 150L.E
-41 WEDNESDAY->04:30AM 29/5/2022 3 A From:Cairo..to:MarsaMatrouh 300L.E
-42 WEDNESDAY->04:30AM 29/5/2022 3 A From:Cairo..to:MarsaMatrouh 300L.E
-31 FRIDAY--->09:00AM 28/06/2022 7 A From:Cairo..to:North_Coast 450L.E
-32 FRIDAY--->09:00AM 28/06/2022 7 A From:Cairo..to:North_Coast 450L.E
-19 SUNDAY--->11:20PM 25416 1 A FromCairotoSharmelSheikh 400L.E
-41 WEDNESDAY->04:30AM 28/06/2022 3 A From:Cairo..to:Hurghada 350L.E
-42 WEDNESDAY->04:30AM 28/06/2022 3 A From:Cairo..to:Hurghada 350L.E
+25 SUNDAY--->11:20PM 25/09/2022 1 A From:Cairo..to:SharmelSheikh 400L.E
+27 SUNDAY--->11:20PM 25/09/2022 1 A From:Cairo..to:SharmelSheikh 400L.E
+18 SATURDAY->06:00AM 25/09/2022 2 A From:Cairo..to:Alexandria 200L.E
+19 SATURDAY->06:00AM 25/09/2022 2 A From:Cairo..to:Alexandria 200L.E
+20 SATURDAY->06:00AM 25/09/2022 2 A From:Cairo..to:Alexandria 200L.E
+21 SATURDAY->06:00AM 25/09/2022 2 A From:Cairo..to:Alexandria 200L.E
